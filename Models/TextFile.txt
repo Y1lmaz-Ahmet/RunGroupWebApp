@@ -1,0 +1,18 @@
+﻿							------ Waarvoor wordt een MVC gebruikt? ------
+
+In het MVC-patroon staat de "M" voor "Model".
+Het Model is verantwoordelijk voor het beheren van de gegevens en de logica van de applicatie.
+Het vertegenwoordigt de informatie waarmee de applicatie werkt en biedt de methoden en functies die nodig zijn om met die gegevens te werken.
+
+Stel je voor dat je een "blog-applicatie" bouwt.
+Het Model in dit geval zou de structuur en de logica bevatten om de blogberichten op te slaan en te beheren.
+
+In de Models-folder van je ASP.NET Core-project zou je bijvoorbeeld een klasse genaamd "BlogPost" kunnen hebben.
+Deze klasse zou de eigenschappen van een blogpost definiëren, zoals de titel, de inhoud en de auteur.
+Het Model zou ook methoden bevatten om nieuwe blogberichten toe te voegen, bestaande blogberichten te bewerken of te verwijderen, en blogberichten op te halen en weer te geven.
+
+Met behulp van het Model kunnen andere onderdelen van de applicatie, zoals de Controller en de View, communiceren en werken met de blogpostgegevens.
+De Controller zou de logica bevatten om de acties van de gebruiker te verwerken, zoals het maken van een nieuwe blogpost, terwijl de View verantwoordelijk is voor het tonen van de blogpostgegevens aan de gebruiker.
+
+Dus het Model speelt een cruciale rol in het MVC-patroon, omdat het de gegevens en de logica beheert die nodig zijn voor de werking van de applicatie.
+Het zorgt ervoor dat de gegevens correct worden opgeslagen, bijgewerkt en weergegeven, en biedt een gestructureerde manier om met die gegevens om te gaan.

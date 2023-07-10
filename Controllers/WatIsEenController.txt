@@ -1,0 +1,22 @@
+﻿In het MVC-patroon staat de "C" voor "Controller".
+De Controller is verantwoordelijk voor het afhandelen van de gebruikersinteractie,
+het ontvangen van verzoeken van de gebruiker en het coördineren van de acties die moeten worden uitgevoerd.
+
+Stel je voor dat je een webwinkel-applicatie bouwt met behulp van ASP.NET Core en MVC.
+De Controller zou fungeren als het middelpunt van de applicatie, waarbij het de verzoeken van de gebruiker ontvangt en de juiste acties uitvoert.
+
+Bijvoorbeeld, als de gebruiker op de "Toevoegen aan winkelwagen" knop klikt op een productpagina, zal de Controller dit verzoek ontvangen.
+De Controller zal vervolgens de nodige logica uitvoeren, zoals het valideren van de gegevens en het bijwerken van de winkelwagen met het gekozen product.
+
+De Controller is ook verantwoordelijk voor het bepalen welke View moet worden getoond aan de gebruiker.
+In het geval van de webwinkel-applicatie zou de Controller bijvoorbeeld kunnen bepalen dat na het toevoegen van een product aan de winkelwagen,
+de gebruiker wordt doorgestuurd naar de winkelwagenpagina om de inhoud te bekijken.
+
+De Controller fungeert als een tussenpersoon tussen de gebruikersinteractie en het Model.
+Het ontvangt de verzoeken, verwerkt ze en coördineert de interactie met het Model om de juiste gegevens op te halen,
+te bewerken of weer te geven.
+Het Model wordt niet rechtstreeks aangeroepen door de gebruiker, maar via de Controller.
+
+Door het scheiden van de logica voor gebruikersinteractie in de Controller, en het beheren van de gegevens en logica in het Model,
+wordt de applicatie beter georganiseerd en gemakkelijker te onderhouden. Dit bevordert ook de herbruikbaarheid,
+omdat verschillende Controllers dezelfde Modelklassen kunnen gebruiken voor verschillende delen van de applicatie.

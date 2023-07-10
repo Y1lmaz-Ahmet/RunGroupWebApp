@@ -1,14 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RunGroupWebApp.Data;
 
 namespace RunGroupWebApp.Controllers
 {
 	public class ClubController : Controller
 	{
-		//Index in the Controller => Index.cshtml in the View folder > Club > Index.cshtml
-		//it has to start with "Index" in the club folder if the IActionResult is set to Index()
-		public IActionResult Index()
+        private readonly ApplicationDBContext _context;
+
+        //ApplicationDBContext = database and brings back the whole table
+        public ClubController(ApplicationDBContext context)
+        {
+            _context = context;
+        }
+        public IActionResult Index()//"C" => MVC
 		{
-			return View();
+            var clubs = _context.Clubs.ToList();//"M" => MVC
+			return View(clubs);//"V" => MVC
 		}
 	}
 }

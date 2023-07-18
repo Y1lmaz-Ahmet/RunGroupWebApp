@@ -51,5 +51,10 @@ namespace RunGroupWebApp.Controllers
             TempData["Error"] = "Wrong credentials, Please try again";
             return View(loginViewModel);
         }
+        public IActionResult Register()
+        {
+            var response = new RegisterViewModel();
+            return View(response);
+        }
     }
 }

@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RunGroupWebApp.Data;
 using RunGroupWebApp.Helpers;
 using RunGroupWebApp.Interfaces;
+using RunGroupWebApp.Models;
 using RunGroupWebApp.Repository;
 using RunGroupWebApp.Services;
 
@@ -17,11 +20,20 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
 });
+//23 + 24 = required to use identityframework
+builder.Services.AddIdentity<AppUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDBContext>();
+//26 = Caching data in memory for improved performance
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+//cookies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
 var app = builder.Build();
 
 if(args.Length == 1 && args[0].ToLower() == "seeddata")
 {
-	Seed.SeedData(app);
+	await Seed.SeedUsersAndRolesAsync(app);
+	//Seed.SeedData(app);
 }
 
 

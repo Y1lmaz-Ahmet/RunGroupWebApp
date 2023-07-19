@@ -12,7 +12,7 @@ namespace RunGroupWebApp.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ApplicationDBContext _context;
 
-        public AccountController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager,ApplicationDBContext context)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ApplicationDBContext context)
         {
             _context = context;
             _userManager = userManager;
@@ -30,15 +30,15 @@ namespace RunGroupWebApp.Controllers
 
             var user = await _userManager.FindByEmailAsync(loginViewModel.EmailAddress);
             //login succes logic
-            if (user != null) 
+            if (user != null)
             {
-                var passwordChecking = await _userManager.CheckPasswordAsync(user,loginViewModel.Password);
+                var passwordChecking = await _userManager.CheckPasswordAsync(user, loginViewModel.Password);
                 if (passwordChecking)
                 {
                     //password correct, sign in
-                    var result = 
+                    var result =
                         await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
-                    if(result.Succeeded)
+                    if (result.Succeeded)
                     {
                         return RedirectToAction("Index", "Race");
                     }
@@ -62,23 +62,22 @@ namespace RunGroupWebApp.Controllers
             if (!ModelState.IsValid) return View(registerViewModel);
 
             var user = await _userManager.FindByEmailAsync(registerViewModel.EmailAddress);
-            if(user != null)
+            if (user != null)
             {
                 TempData["Error"] = "This email address is already in use";
                 return View(registerViewModel);
             }
 
-            var newUser = new AppUser
+            var newUser = new AppUser()
             {
                 Email = registerViewModel.EmailAddress,
                 UserName = registerViewModel.EmailAddress
             };
-            var newUserResponse = await _userManager.CreateAsync(newUser,registerViewModel.Password);
+            var newUserResponse = await _userManager.CreateAsync(newUser, registerViewModel.Password);
 
-            if(newUserResponse.Succeeded)
-            {
+            if (newUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-            }
+               
 
             return RedirectToAction("Index", "Race");
         }
@@ -86,7 +85,7 @@ namespace RunGroupWebApp.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index","Race");
+            return RedirectToAction("Index", "Race");
         }
     }
 }

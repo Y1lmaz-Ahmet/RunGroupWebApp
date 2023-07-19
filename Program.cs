@@ -11,10 +11,12 @@ using RunGroupWebApp.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//Dependency Injection(DI)
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IClubRepository,ClubRepository>();
 builder.Services.AddScoped<IRaceRepository,RaceRepository>();
 builder.Services.AddScoped<IPhotoService,PhotoService>();
+builder.Services.AddScoped<IDashboardRepository,DashboardRepository>();
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {

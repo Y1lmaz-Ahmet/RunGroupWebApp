@@ -17,14 +17,14 @@ namespace RunGroupWebApp.Repository
         }
         public async Task<List<Club>> GetAllUserClubs()
         {
-            var curUser = _httpContextAccessor.HttpContext?.User;
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
             var userClubs =  await _context.Clubs.Where(x => x.AppUser.Id == curUser.ToString()).ToListAsync();
             return userClubs.ToList();
         }
 
         public async Task<List<Race>> GetAllUserRaces()
         {
-            var curUser = _httpContextAccessor.HttpContext?.User;
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
             var userRaces = await _context.Races.Where(x => x.AppUser.Id == curUser.ToString()).ToListAsync();
             return userRaces.ToList();
         }

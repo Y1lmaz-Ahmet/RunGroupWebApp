@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @model RunGroupWebApp.ViewModels.DashboardViewModel;
 
-@inject SignInManager<AppUser> SignInManager
+
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,7 +30,7 @@
                                 <div class="btn-group">
                                     <a type="btn btn-success" asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id"
                                        class="btn btn-sm btn-outline-secondary">View</a>
-                                    @if (SignInManager.IsSignedIn(User))
+                                    @if (User.Identity.IsAuthenticated)
                                     {
                                         <a asp-controller="Race" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
                                         <a asp-controller="Race" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
@@ -57,7 +57,7 @@
                                 <div class="btn-group">
                                     <a type="btn btn-success" asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id"
                                        class="btn btn-sm btn-outline-secondary">View</a>
-                                    @if (SignInManager.IsSignedIn(User))
+                                    @if (User.Identity.IsAuthenticated)
                                     {
                                         <a asp-controller="Club" asp-action="Edit" asp-route-id="@item.Id" class="btn               btn-sm btn-outline-secondary">Edit</a>
                                         <a asp-controller="Club" asp-action="Delete" asp-route-id="@item.Id" class="btn             btn-sm btn-outline-secondary">Delete</a>

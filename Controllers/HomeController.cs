@@ -28,7 +28,7 @@ namespace RunGroupWebApp.Controllers
 			try
 			{
 				
-				string url = "https://ipinfo.io?token=9b38b4d5a60fde";
+				string url = "https://ipinfo.io/212.233.45.14?token=9b38b4d5a60fde";
 				var info = new WebClient().DownloadString(url);
 				//takes the JSON and turns it into an Object = DeserializeObject
 				ipInfo = JsonConvert.DeserializeObject<IPinfo>(info);
